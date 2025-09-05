@@ -1,0 +1,21 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Development
+*.log
+node_modules/
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp

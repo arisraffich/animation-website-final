@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children's Book Animation Services | US Illustrations</title>
+    <meta name="description" content="Transform your children's book into captivating animations. Professional multi-voiceover, royalty-free music, and seamless transitions. $450 per minute.">
+    
+    <!-- Fonts matching usillustrations.com -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- PDF.js for embedded PDF viewing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+    <!-- EmailJS for contact form -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- YouTube Player API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Transform Your Children's Book Into 
+                    <span class="gradient-text">Captivating Animation</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Professional multi-voiceover, royalty-free background music, and seamless transitions. 
+                    Watch your illustrations come to life in stunning animations.
+                </p>
+                <div class="hero-video-preview">
+                    <iframe id="heroVideoFrame" 
+                            frameborder="0" 
+                            allow="autoplay; encrypted-media" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="openContactForm()">Get Started Today</button>
+                    <button class="btn-secondary" onclick="scrollToProjects()">View Examples</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Why Animation Section -->
+    <section class="why-animation">
+        <div class="container">
+            <h2 class="section-title">Why Animation Transforms Your Book</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card floating-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>10x More Engagement</h3>
+                    <p>Animated books capture attention 10 times longer than static images, keeping readers mesmerized from start to finish.</p>
+                </div>
+                <div class="benefit-card floating-card">
+                    <div class="benefit-icon">🎭</div>
+                    <h3>Emotional Connection</h3>
+                    <p>Voice narration and music create deep emotional bonds with characters, making your story unforgettable.</p>
+                </div>
+                <div class="benefit-card floating-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Marketing Powerhouse</h3>
+                    <p>Use your animation for social media, book trailers, presentations, and promotional campaigns that convert.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Showcase Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Our Animation Portfolio</h2>
+            <p class="section-subtitle">Browse through actual book pages and their animated versions below. Click through PDF pages and watch the magic happen.</p>
+            
+            <div class="projects-container">
+                <!-- Project 1: Tracy Sushel -->
+                <div class="project-card" data-project="tracy">
+                    <div class="project-header">
+                        <h3>Spending Time With Mr Clock</h3>
+                        <p class="project-author">by Tracy Sushel</p>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-side">
+                            <h4>Original Book Layout</h4>
+                            <div class="pdf-container" id="pdf-tracy">
+                                <canvas id="pdf-canvas-tracy"></canvas>
+                                <div class="pdf-controls">
+                                    <button onclick="previousPage('tracy')" class="pdf-btn">◀</button>
+                                    <span id="pdf-info-tracy">Page 1 of 1</span>
+                                    <button onclick="nextPage('tracy')" class="pdf-btn">▶</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-side">
+                            <h4>Animated Result</h4>
+                            <div class="video-container">
+                                <div id="player-tracy" data-video-id="UqYtAWzNm28" class="youtube-player"></div>
+                                <div class="video-overlay">
+                                    <button class="video-mute-toggle" data-player="tracy">
+                                        <svg class="audio-icon muted" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M16 9L18 11M18 9L16 11M3 9V15H7L12 20V4L7 9H3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.5 8.5L18.5 11.5M18.5 8.5L15.5 11.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg class="audio-icon unmuted" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+                                            <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M19.07 4.93C20.9445 6.80448 21.9998 9.34785 21.9998 12C21.9998 14.6522 20.9445 17.1955 19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 12C17.0039 13.3308 16.4774 14.6024 15.54 15.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Victoria Animation -->
+                <div class="project-card" data-project="victoria">
+                    <div class="project-header">
+                        <h3>Victoria's Story</h3>
+                        <p class="project-author">Animated Adventure</p>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-side">
+                            <h4>Original Book Layout</h4>
+                            <div class="pdf-container" id="pdf-victoria">
+                                <canvas id="pdf-canvas-victoria"></canvas>
+                                <div class="pdf-controls">
+                                    <button onclick="previousPage('victoria')" class="pdf-btn">◀</button>
+                                    <span id="pdf-info-victoria">Page 1 of 1</span>
+                                    <button onclick="nextPage('victoria')" class="pdf-btn">▶</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-side">
+                            <h4>Animated Result</h4>
+                            <div class="video-container">
+                                <div id="player-victoria" data-video-id="EJMGDcLZspw" class="youtube-player"></div>
+                                <div class="video-overlay">
+                                    <button class="video-mute-toggle" data-player="victoria">
+                                        <svg class="audio-icon muted" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M16 9L18 11M18 9L16 11M3 9V15H7L12 20V4L7 9H3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.5 8.5L18.5 11.5M18.5 8.5L15.5 11.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg class="audio-icon unmuted" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+                                            <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M19.07 4.93C20.9445 6.80448 21.9998 9.34785 21.9998 12C21.9998 14.6522 20.9445 17.1955 19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 12C17.0039 13.3308 16.4774 14.6024 15.54 15.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: NelliROse -->
+                <div class="project-card" data-project="nellirose">
+                    <div class="project-header">
+                        <h3>Nella's Kindness Kicks</h3>
+                        <p class="project-author">by NelliROse Farells</p>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-side">
+                            <h4>Original Book Layout</h4>
+                            <div class="pdf-container" id="pdf-nellirose">
+                                <canvas id="pdf-canvas-nellirose"></canvas>
+                                <div class="pdf-controls">
+                                    <button onclick="previousPage('nellirose')" class="pdf-btn">◀</button>
+                                    <span id="pdf-info-nellirose">Page 1 of 1</span>
+                                    <button onclick="nextPage('nellirose')" class="pdf-btn">▶</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-side">
+                            <h4>Animated Result</h4>
+                            <div class="video-container">
+                                <div id="player-nellirose" data-video-id="dy48vro3vKY" class="youtube-player"></div>
+                                <div class="video-overlay">
+                                    <button class="video-mute-toggle" data-player="nellirose">
+                                        <svg class="audio-icon muted" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M16 9L18 11M18 9L16 11M3 9V15H7L12 20V4L7 9H3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.5 8.5L18.5 11.5M18.5 8.5L15.5 11.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg class="audio-icon unmuted" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+                                            <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M19.07 4.93C20.9445 6.80448 21.9998 9.34785 21.9998 12C21.9998 14.6522 20.9445 17.1955 19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 12C17.0039 13.3308 16.4774 14.6024 15.54 15.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Angela Rodriguez -->
+                <div class="project-card" data-project="angela">
+                    <div class="project-header">
+                        <h3>On the Highway</h3>
+                        <p class="project-author">by Angela Rodriguez</p>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-side">
+                            <h4>Original Book Layout</h4>
+                            <div class="pdf-container" id="pdf-angela">
+                                <canvas id="pdf-canvas-angela"></canvas>
+                                <div class="pdf-controls">
+                                    <button onclick="previousPage('angela')" class="pdf-btn">◀</button>
+                                    <span id="pdf-info-angela">Page 1 of 1</span>
+                                    <button onclick="nextPage('angela')" class="pdf-btn">▶</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-side">
+                            <h4>Animated Result</h4>
+                            <div class="video-container">
+                                <div id="player-angela" data-video-id="PcJIW_QuJ6M" class="youtube-player"></div>
+                                <div class="video-overlay">
+                                    <button class="video-mute-toggle" data-player="angela">
+                                        <svg class="audio-icon muted" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M16 9L18 11M18 9L16 11M3 9V15H7L12 20V4L7 9H3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.5 8.5L18.5 11.5M18.5 8.5L15.5 11.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg class="audio-icon unmuted" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+                                            <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M19.07 4.93C20.9445 6.80448 21.9998 9.34785 21.9998 12C21.9998 14.6522 20.9445 17.1955 19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 12C17.0039 13.3308 16.4774 14.6024 15.54 15.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Tate Bailey -->
+                <div class="project-card" data-project="tate">
+                    <div class="project-header">
+                        <h3>Patchy Lou</h3>
+                        <p class="project-author">by Tate Bailey</p>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-side">
+                            <h4>Original Book Layout</h4>
+                            <div class="pdf-container" id="pdf-tate">
+                                <canvas id="pdf-canvas-tate"></canvas>
+                                <div class="pdf-controls">
+                                    <button onclick="previousPage('tate')" class="pdf-btn">◀</button>
+                                    <span id="pdf-info-tate">Page 1 of 1</span>
+                                    <button onclick="nextPage('tate')" class="pdf-btn">▶</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-side">
+                            <h4>Animated Result</h4>
+                            <div class="video-container">
+                                <div id="player-tate" data-video-id="gcAm0C5Sjpo" class="youtube-player"></div>
+                                <div class="video-overlay">
+                                    <button class="video-mute-toggle" data-player="tate">
+                                        <svg class="audio-icon muted" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M16 9L18 11M18 9L16 11M3 9V15H7L12 20V4L7 9H3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.5 8.5L18.5 11.5M18.5 8.5L15.5 11.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg class="audio-icon unmuted" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+                                            <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M19.07 4.93C20.9445 6.80448 21.9998 9.34785 21.9998 12C21.9998 14.6522 20.9445 17.1955 19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15.54 8.46C16.4774 9.39764 17.0039 10.6692 17.0039 12C17.0039 13.3308 16.4774 14.6024 15.54 15.54" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <div class="price">
+                        <span class="price-amount">$450</span>
+                        <span class="price-unit">per minute</span>
+                    </div>
+                </div>
+                <div class="pricing-features">
+                    <div class="feature-showcase">
+                        <div class="feature-card voiceover-card">
+                            <div class="feature-icon">🎤</div>
+                            <h5>Multi-voiceover narration</h5>
+                            <div class="feature-animation">
+                                <div class="voice-waves">
+                                    <div class="wave"></div>
+                                    <div class="wave"></div>
+                                    <div class="wave"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card music-card">
+                            <div class="feature-icon">🎵</div>
+                            <h5>Royalty-free background music</h5>
+                            <div class="feature-animation">
+                                <div class="music-bars">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card editing-card">
+                            <div class="feature-icon">✨</div>
+                            <h5>Professional editing & transitions</h5>
+                            <div class="feature-animation">
+                                <div class="transition-effect">
+                                    <div class="scene scene1"></div>
+                                    <div class="scene scene2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card accuracy-card">
+                            <div class="feature-icon">🎯</div>
+                            <h5>100% book-accurate animation</h5>
+                            <div class="feature-animation">
+                                <div class="accuracy-demo">
+                                    <div class="book-icon">📖</div>
+                                    <div class="equals">=</div>
+                                    <div class="video-icon">🎬</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-primary large" onclick="openContactForm()">Start Your Animation Project</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Bring Your Book to Life?</h2>
+                <p>Join the authors who've already transformed their children's books into captivating animations.</p>
+                <button class="btn-primary large" onclick="openContactForm()">Get Started Now</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Start Your Animation Project</h3>
+                <span class="close" onclick="closeContactForm()">&times;</span>
+            </div>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="bookTitle">Book Title *</label>
+                    <input type="text" id="bookTitle" name="book_title" required>
+                </div>
+                <div class="form-group">
+                    <label for="pageCount">Approximate Page Count</label>
+                    <select id="pageCount" name="page_count">
+                        <option value="">Select range</option>
+                        <option value="8-16">8-16 pages</option>
+                        <option value="16-24">16-24 pages</option>
+                        <option value="24-32">24-32 pages</option>
+                        <option value="32+">32+ pages</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timeline">Desired Timeline</label>
+                    <select id="timeline" name="timeline">
+                        <option value="">Select timeline</option>
+                        <option value="ASAP">As soon as possible</option>
+                        <option value="1-2 weeks">1-2 weeks</option>
+                        <option value="2-4 weeks">2-4 weeks</option>
+                        <option value="1+ months">1+ months</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Details</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your book, special requirements, or any questions you have..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary" id="submitBtn">
+                        <span id="submitText">Send Message</span>
+                        <span id="submitSpinner" class="spinner" style="display: none;">◐</span>
+                    </button>
+                </div>
+            </form>
+            <div id="successMessage" class="success-message" style="display: none;">
+                <h4>Thank You!</h4>
+                <p>Your message has been sent successfully. We'll get back to you within 24 hours with a personalized quote and timeline.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3 id="videoModalTitle">Video Preview</h3>
+                <div class="video-controls">
+                    <button id="muteToggle" class="control-btn">🔊</button>
+                    <button id="playPauseToggle" class="control-btn">⏸️</button>
+                    <button id="closeVideoModal" class="control-btn close-btn">✕</button>
+                </div>
+            </div>
+            <div class="video-modal-player">
+                <div id="fullscreenPlayer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 US Illustrations. All rights reserved.</p>
+                <p>Transform your children's books into captivating animations.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
