@@ -8,6 +8,8 @@ import http.server
 import socketserver
 import os
 import sys
+import json
+import glob
 from pathlib import Path
 
 # Set the directory to serve files from

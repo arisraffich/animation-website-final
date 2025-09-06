@@ -3,8 +3,7 @@
     emailjs.init("your_public_key_here"); // Replace with your EmailJS public key
 })();
 
-// Configure PDF.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+// Simple image slider configuration
 
 // Global audio state
 let audioEnabled = false;
@@ -48,27 +47,16 @@ function initializeRandomHeroVideo() {
     }
 }
 
-// PDF rendering state
-const pdfState = {
-    tracy: { pdfDoc: null, pageNum: 1, totalPages: 0 },
-    victoria: { pdfDoc: null, pageNum: 1, totalPages: 0 },
-    nellirose: { pdfDoc: null, pageNum: 1, totalPages: 0 },
-    angela: { pdfDoc: null, pageNum: 1, totalPages: 0 },
-    tate: { pdfDoc: null, pageNum: 1, totalPages: 0 }
+// Simple Image Slider State
+const sliders = {
+    tracy: { images: [], currentIndex: 0 },
+    victoria: { images: [], currentIndex: 0 },
+    nellirose: { images: [], currentIndex: 0 },
+    angela: { images: [], currentIndex: 0 },
+    tate: { images: [], currentIndex: 0 }
 };
 
-// PDF file paths - detect if we're running on HTTP server
-const isLocalFile = window.location.protocol === 'file:';
-const baseUrl = isLocalFile ? '' : window.location.origin;
-
-console.log('🔍 Debug Info:');
-console.log('Protocol:', window.location.protocol);
-console.log('Host:', window.location.host);  
-console.log('Full URL:', window.location.href);
-console.log('Is Local File:', isLocalFile);
-
-// Dynamic PDF folder paths - will auto-detect PDF files
-const pdfFolders = {
+const folders = {
     tracy: './Assets/Tracy Sushel Animation/',
     victoria: './Assets/Victoria Animation 2/',
     nellirose: './Assets/NailROse Animation/',
@@ -76,7 +64,104 @@ const pdfFolders = {
     tate: './Assets/Tate Bailey _ Patchy Lou/'
 };
 
-let pdfPaths = {}; // Will be populated dynamically
+// Auto-detect all images and initialize sliders
+async function initSliders() {
+    console.log('🎯 Auto-detecting images...');
+    
+    for (const [project, folder] of Object.entries(folders)) {
+        console.log(`Checking ${project}...`);
+        
+        // Try page numbers from 1 to 50
+        const images = [];
+        for (let i = 1; i <= 50; i++) {
+            const pageNum = i.toString().padStart(2, '0');
+            let testPath = '';
+            
+            // Try different naming patterns
+            const patterns = [
+                `${folder}Page_${pageNum}.jpg`,
+                `${folder}Layout_Page_${pageNum}.jpg`,
+                `${folder}Lyout_Page_${pageNum}.jpg`,
+                `${folder}On the Highway - Interior 2_Page_${pageNum}.jpg`,
+                `${folder}Nella's Kindness Kicks by NelliROse Farells_Page_${pageNum}.jpg`
+            ];
+            
+            for (const pattern of patterns) {
+                try {
+                    const response = await fetch(pattern, { method: 'HEAD' });
+                    if (response.ok) {
+                        images.push(pattern);
+                        console.log(`Found: ${pattern}`);
+                        break;
+                    }
+                } catch (e) {
+                    // Continue to next pattern
+                }
+            }
+        }
+        
+        if (images.length > 0) {
+            sliders[project].images = images;
+            
+            // Load first image
+            const img = document.getElementById(`slideshow-image-${project}`);
+            const info = document.getElementById(`slideshow-info-${project}`);
+            
+            if (img) {
+                img.src = images[0];
+                sliders[project].currentIndex = 0;
+                
+                if (info) {
+                    info.textContent = `Page 1 of ${images.length}`;
+                }
+                
+                console.log(`✅ ${project}: ${images.length} images`);
+            }
+        }
+    }
+}
+
+function previousImage(project) {
+    console.log(`◀ Previous clicked for ${project}`);
+    const slider = sliders[project];
+    if (!slider || slider.images.length === 0) {
+        console.log(`No images for ${project}`);
+        return;
+    }
+    
+    slider.currentIndex = slider.currentIndex > 0 ? slider.currentIndex - 1 : slider.images.length - 1;
+    console.log(`Moving to index ${slider.currentIndex}`);
+    updateImage(project);
+}
+
+function nextImage(project) {
+    console.log(`▶ Next clicked for ${project}`);
+    const slider = sliders[project];
+    if (!slider || slider.images.length === 0) {
+        console.log(`No images for ${project}`);
+        return;
+    }
+    
+    slider.currentIndex = slider.currentIndex < slider.images.length - 1 ? slider.currentIndex + 1 : 0;
+    console.log(`Moving to index ${slider.currentIndex}`);
+    updateImage(project);
+}
+
+function updateImage(project) {
+    const slider = sliders[project];
+    const img = document.getElementById(`slideshow-image-${project}`);
+    const info = document.getElementById(`slideshow-info-${project}`);
+    
+    console.log(`Updating ${project} image to: ${slider.images[slider.currentIndex]}`);
+    
+    if (img && slider.images.length > 0) {
+        img.src = slider.images[slider.currentIndex];
+        
+        if (info) {
+            info.textContent = `Page ${slider.currentIndex + 1} of ${slider.images.length}`;
+        }
+    }
+}
 
 // YouTube Player API ready callback
 function onYouTubeIframeAPIReady() {
@@ -167,12 +252,69 @@ async function initializePDFViewers() {
     await loadAllPDFs();
 }
 
+// SIMPLE TEST - Tracy only (ALL 17 IMAGES)
+let tracyImages = [
+    './Assets/Tracy Sushel Animation/Lyout_Page_01.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_03.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_05.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_07.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_09.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_11.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_13.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_15.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_17.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_19.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_21.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_23.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_25.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_27.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_29.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_31.jpg',
+    './Assets/Tracy Sushel Animation/Lyout_Page_33.jpg'
+];
+let tracyIndex = 0;
+
+function previousImage(project) {
+    if (project === 'tracy') {
+        tracyIndex--;
+        if (tracyIndex < 0) tracyIndex = 16;
+        
+        const pageNum = ((tracyIndex * 2) + 1).toString().padStart(2, '0');
+        const imagePath = `./Assets/Tracy Sushel Animation/Lyout_Page_${pageNum}.jpg`;
+        document.getElementById('slideshow-image-tracy').src = imagePath;
+        document.getElementById('slideshow-info-tracy').textContent = `Page ${tracyIndex + 1} of 17`;
+        console.log('Tracy previous:', tracyIndex);
+    }
+}
+
+function nextImage(project) {
+    if (project === 'tracy') {
+        tracyIndex++;
+        if (tracyIndex > 16) tracyIndex = 0;
+        
+        const pageNum = ((tracyIndex * 2) + 1).toString().padStart(2, '0');
+        const imagePath = `./Assets/Tracy Sushel Animation/Lyout_Page_${pageNum}.jpg`;
+        document.getElementById('slideshow-image-tracy').src = imagePath;
+        document.getElementById('slideshow-info-tracy').textContent = `Page ${tracyIndex + 1} of 17`;
+        console.log('Tracy next:', tracyIndex);
+    }
+}
+
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing...');
     
-    // Detect PDF files first
-    await detectPDFFiles();
+    // Initialize Tracy slider
+    setTimeout(() => {
+        const img = document.getElementById('slideshow-image-tracy');
+        const info = document.getElementById('slideshow-info-tracy');
+        
+        if (img) {
+            img.src = './Assets/Tracy Sushel Animation/Lyout_Page_01.jpg';
+            info.textContent = 'Page 1 of 17';
+            console.log('Tracy slider initialized');
+        }
+    }, 1000);
     
     // Initialize random hero video
     initializeRandomHeroVideo();
@@ -191,9 +333,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     // Initialize video modal controls
     initializeVideoModalControls();
-    
-    // Initialize PDF viewers
-    await initializePDFViewers();
     
     // Add smooth scrolling for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -424,7 +563,7 @@ async function loadPDF(projectKey) {
     };
     progressTimeout = setTimeout(showProgress, 5000);
     
-    // Check if running on local file system
+    // Only show server error for actual file:// protocol (NOT for missing PDFs on web)
     if (isLocalFile) {
         console.log('Running on local file system, showing error');
         setTimeout(() => {
@@ -440,12 +579,22 @@ async function loadPDF(projectKey) {
     try {
         console.log(`Fetching PDF: ${pdfPaths[projectKey]}`);
         
+        // Add CORS headers for PDF.js
+        const pdfUrl = pdfPaths[projectKey];
+        const loadingTaskOptions = {
+            url: pdfUrl,
+            cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+            cMapPacked: true,
+            disableRange: false,
+            disableStream: false
+        };
+        
         // Add timeout to prevent infinite loading (increased for large PDFs)
         const timeoutPromise = new Promise((_, reject) => {
             setTimeout(() => reject(new Error('PDF loading timeout')), 30000);
         });
         
-        const loadingTask = pdfjsLib.getDocument(pdfPaths[projectKey]);
+        const loadingTask = pdfjsLib.getDocument(loadingTaskOptions);
         const pdf = await Promise.race([loadingTask.promise, timeoutPromise]);
         
         console.log(`PDF loaded for ${projectKey}, pages: ${pdf.numPages}`);
@@ -1029,3 +1178,49 @@ function updateMuteButtonState(playerKey, isMuted) {
 function updateProjectPlayerState(playerKey, event) {
     // Playing state tracking removed - no more visual labels
 }
+
+// Image slideshow functions
+async function detectImageFiles() {
+    console.log('🔍 Detecting image files for all projects...');
+    
+    // Image patterns for each project
+    const imagePatterns = {
+        tracy: { folder: './Assets/Tracy Sushel Animation/', pattern: 'Lyout_Page_' },
+        victoria: { folder: './Assets/Victoria Animation 2/', pattern: 'Layout_Page_' },
+        nellirose: { folder: './Assets/NailROse Animation/', pattern: 'Nella\'s Kindness Kicks by NelliROse Farells_Page_' },
+        angela: { folder: './Assets/Angela Rodriguez - On the Highway/', pattern: 'On the Highway - Interior 2_Page_' },
+        tate: { folder: './Assets/Tate Bailey _ Patchy Lou/', pattern: 'Layout_Page_' }
+    };
+    
+    // Detect images for each project
+    for (const [projectKey, config] of Object.entries(imagePatterns)) {
+        const images = [];
+        console.log(`🔍 Detecting images for ${projectKey}...`);
+        
+        // Try page numbers 01 through 35
+        for (let i = 1; i <= 35; i++) {
+            const pageNum = i.toString().padStart(2, '0');
+            const testPath = `${config.folder}${config.pattern}${pageNum}.jpg`;
+            
+            try {
+                const response = await fetch(testPath, { method: 'HEAD' });
+                if (response.ok) {
+                    images.push(testPath);
+                    console.log(`📄 Found image: ${testPath}`);
+                }
+            } catch (e) {
+                // Image doesn't exist, continue
+            }
+        }
+        
+        if (images.length > 0) {
+            slideshowState[projectKey].images = images.sort();
+            slideshowState[projectKey].totalImages = images.length;
+            console.log(`✅ Found ${images.length} images for ${projectKey}`);
+        } else {
+            console.log(`❌ No images found for ${projectKey}`);
+        }
+    }
+}
+
+// OLD CODE DELETED

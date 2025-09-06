@@ -11,9 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- PDF.js for embedded PDF viewing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-    
     <!-- EmailJS for contact form -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
@@ -91,12 +88,12 @@
                     <div class="comparison-container">
                         <div class="comparison-side">
                             <h4>Original Book Layout</h4>
-                            <div class="pdf-container" id="pdf-tracy">
-                                <canvas id="pdf-canvas-tracy"></canvas>
-                                <div class="pdf-controls">
-                                    <button onclick="previousPage('tracy')" class="pdf-btn">◀</button>
-                                    <span id="pdf-info-tracy">Page 1 of 1</span>
-                                    <button onclick="nextPage('tracy')" class="pdf-btn">▶</button>
+                            <div class="image-slideshow-container" id="slideshow-tracy">
+                                <img id="slideshow-image-tracy" src="" alt="Book page" class="slideshow-image">
+                                <div class="slideshow-controls">
+                                    <button onclick="previousImage('tracy')" class="slideshow-btn">◀</button>
+                                    <span id="slideshow-info-tracy">Page 1 of 1</span>
+                                    <button onclick="nextImage('tracy')" class="slideshow-btn">▶</button>
                                 </div>
                             </div>
                         </div>
@@ -131,12 +128,12 @@
                     <div class="comparison-container">
                         <div class="comparison-side">
                             <h4>Original Book Layout</h4>
-                            <div class="pdf-container" id="pdf-victoria">
-                                <canvas id="pdf-canvas-victoria"></canvas>
-                                <div class="pdf-controls">
-                                    <button onclick="previousPage('victoria')" class="pdf-btn">◀</button>
-                                    <span id="pdf-info-victoria">Page 1 of 1</span>
-                                    <button onclick="nextPage('victoria')" class="pdf-btn">▶</button>
+                            <div class="image-slideshow-container" id="slideshow-victoria">
+                                <img id="slideshow-image-victoria" src="" alt="Book page" class="slideshow-image">
+                                <div class="slideshow-controls">
+                                    <button onclick="previousImage('victoria')" class="slideshow-btn">◀</button>
+                                    <span id="slideshow-info-victoria">Page 1 of 1</span>
+                                    <button onclick="nextImage('victoria')" class="slideshow-btn">▶</button>
                                 </div>
                             </div>
                         </div>
@@ -171,12 +168,12 @@
                     <div class="comparison-container">
                         <div class="comparison-side">
                             <h4>Original Book Layout</h4>
-                            <div class="pdf-container" id="pdf-nellirose">
-                                <canvas id="pdf-canvas-nellirose"></canvas>
-                                <div class="pdf-controls">
-                                    <button onclick="previousPage('nellirose')" class="pdf-btn">◀</button>
-                                    <span id="pdf-info-nellirose">Page 1 of 1</span>
-                                    <button onclick="nextPage('nellirose')" class="pdf-btn">▶</button>
+                            <div class="image-slideshow-container" id="slideshow-nellirose">
+                                <img id="slideshow-image-nellirose" src="" alt="Book page" class="slideshow-image">
+                                <div class="slideshow-controls">
+                                    <button onclick="previousImage('nellirose')" class="slideshow-btn">◀</button>
+                                    <span id="slideshow-info-nellirose">Page 1 of 1</span>
+                                    <button onclick="nextImage('nellirose')" class="slideshow-btn">▶</button>
                                 </div>
                             </div>
                         </div>
@@ -211,12 +208,12 @@
                     <div class="comparison-container">
                         <div class="comparison-side">
                             <h4>Original Book Layout</h4>
-                            <div class="pdf-container" id="pdf-angela">
-                                <canvas id="pdf-canvas-angela"></canvas>
-                                <div class="pdf-controls">
-                                    <button onclick="previousPage('angela')" class="pdf-btn">◀</button>
-                                    <span id="pdf-info-angela">Page 1 of 1</span>
-                                    <button onclick="nextPage('angela')" class="pdf-btn">▶</button>
+                            <div class="image-slideshow-container" id="slideshow-angela">
+                                <img id="slideshow-image-angela" src="" alt="Book page" class="slideshow-image">
+                                <div class="slideshow-controls">
+                                    <button onclick="previousImage('angela')" class="slideshow-btn">◀</button>
+                                    <span id="slideshow-info-angela">Page 1 of 1</span>
+                                    <button onclick="nextImage('angela')" class="slideshow-btn">▶</button>
                                 </div>
                             </div>
                         </div>
@@ -251,12 +248,12 @@
                     <div class="comparison-container">
                         <div class="comparison-side">
                             <h4>Original Book Layout</h4>
-                            <div class="pdf-container" id="pdf-tate">
-                                <canvas id="pdf-canvas-tate"></canvas>
-                                <div class="pdf-controls">
-                                    <button onclick="previousPage('tate')" class="pdf-btn">◀</button>
-                                    <span id="pdf-info-tate">Page 1 of 1</span>
-                                    <button onclick="nextPage('tate')" class="pdf-btn">▶</button>
+                            <div class="image-slideshow-container" id="slideshow-tate">
+                                <img id="slideshow-image-tate" src="" alt="Book page" class="slideshow-image">
+                                <div class="slideshow-controls">
+                                    <button onclick="previousImage('tate')" class="slideshow-btn">◀</button>
+                                    <span id="slideshow-info-tate">Page 1 of 1</span>
+                                    <button onclick="nextImage('tate')" class="slideshow-btn">▶</button>
                                 </div>
                             </div>
                         </div>
@@ -456,5 +453,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="new-script.js"></script>
 </body>
 </html>
