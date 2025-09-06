@@ -2,14 +2,28 @@
 
 const images = {
     tracy: [
-        './Assets/Tracy Sushel Animation/Lyout_Page_01.jpg',
-        './Assets/Tracy Sushel Animation/Lyout_Page_03.jpg',
-        './Assets/Tracy Sushel Animation/Lyout_Page_05.jpg'
+        './Assets/Tracy Sushel Animation/1.jpg',
+        './Assets/Tracy Sushel Animation/2.jpg',
+        './Assets/Tracy Sushel Animation/3.jpg',
+        './Assets/Tracy Sushel Animation/4.jpg',
+        './Assets/Tracy Sushel Animation/5.jpg',
+        './Assets/Tracy Sushel Animation/6.jpg',
+        './Assets/Tracy Sushel Animation/7.jpg',
+        './Assets/Tracy Sushel Animation/8.jpg'
     ],
     angela: [
-        './Assets/Angela Rodriguez - On the Highway/On the Highway - Interior 2_Page_01.jpg',
-        './Assets/Angela Rodriguez - On the Highway/On the Highway - Interior 2_Page_03.jpg',
-        './Assets/Angela Rodriguez - On the Highway/On the Highway - Interior 2_Page_05.jpg'
+        './Assets/Angela Rodriguez - On the Highway/1.jpg',
+        './Assets/Angela Rodriguez - On the Highway/2.jpg',
+        './Assets/Angela Rodriguez - On the Highway/3.jpg',
+        './Assets/Angela Rodriguez - On the Highway/4.jpg',
+        './Assets/Angela Rodriguez - On the Highway/5.jpg',
+        './Assets/Angela Rodriguez - On the Highway/6.jpg',
+        './Assets/Angela Rodriguez - On the Highway/7.jpg',
+        './Assets/Angela Rodriguez - On the Highway/8.jpg',
+        './Assets/Angela Rodriguez - On the Highway/9.jpg',
+        './Assets/Angela Rodriguez - On the Highway/10.jpg',
+        './Assets/Angela Rodriguez - On the Highway/11.jpg',
+        './Assets/Angela Rodriguez - On the Highway/12.jpg'
     ]
 };
 
