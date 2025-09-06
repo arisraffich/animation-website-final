@@ -1,21 +1,21 @@
-# System files
-.DS_Store
-Thumbs.db
-
-# Development
-*.log
-node_modules/
-.env
+# Cloudflare Pages
+.wrangler/
+wrangler.toml
 
 # Python
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
 
 # IDE
 .vscode/
 .idea/
-
-# Temporary files
-*.tmp
-*.temp
