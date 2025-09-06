@@ -1,0 +1,13 @@
+{
+  "name": "animation-website-final",
+  "version": "1.0.0",
+  "description": "Children's Book Animation Services Website",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "echo 'Static site deployed'"
+  },
+  "keywords": ["animation", "childrens-books", "website"],
+  "author": "US Illustrations",
+  "license": "MIT"
+}
